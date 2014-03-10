@@ -70,17 +70,15 @@ public class SchoolListActivity extends ListActivity{
                 // getting values from selected ListItem
             	try{
                 String name = ((TextView)view.findViewById(R.id.school_name)).getText().toString();
-                Log.d("SCHOOL_NAME",name);
-                /*String slug = ((TextView) view.findViewById(R.id.school_slug)).getText().toString();
-                Log.d("SCHOOL_SLUG",slug);
-                String website = ((TextView) view.findViewById(R.id.school_website)).getText().toString();*/
+                String slug = ((TextView)view.findViewById(R.id.slug)).getText().toString();
+                String website = ((TextView)view.findViewById(R.id.website)).getText().toString();
  
+                Log.d("KAASSA_SLUG",slug);
                 // Starting single contact activity
-                Intent intent = new Intent(getApplicationContext(),
-                        SingleSchoolActivity.class);
+                Intent intent = new Intent(getApplicationContext(),SingleSchoolActivity.class);
                 intent.putExtra(jschool.KAASSA_NAME, name);
-                //intent.putExtra(jschool.KAASSA_CLASSE_SLUG, slug);
-                //intent.putExtra(jschool.KAASSA_CONTACT_WEB_SITE, website);
+                intent.putExtra(jschool.KAASSA_CLASSE_SLUG, slug);
+                intent.putExtra(jschool.KAASSA_CONTACT_WEB_SITE, website);
                 startActivity(intent);
             	}
             	catch (Exception e){
@@ -92,8 +90,6 @@ public class SchoolListActivity extends ListActivity{
             }
         });
         
-        
- 
         // Calling async task to get json
         new GetSchools().execute();
     }
@@ -141,17 +137,13 @@ public class SchoolListActivity extends ListActivity{
                         JSONObject schools = allschools.getJSONObject(i);
                          
                         String name = schools.getString(jschool.KAASSA_NAME);
-                        Log.d("SCHOOL_NAME",name);
 
                         String slug = schools.getString(jschool.KAASSA_SLUG);
-                        Log.d("SCHOOL_SLUG",slug);
 
                         // school node is JSON Object
                         JSONObject contact = schools.getJSONObject(jschool.KAASSA_CONTACT);
-                        Log.d("SCHOOL_CONTACT",contact.toString());
                         
                         String website = contact.getString(jschool.KAASSA_CONTACT_WEB_SITE);
-                        Log.d("SCHOOL_WEBSITE",website);
                         // tmp hashmap for single school
                         HashMap<String, String> school = new HashMap<String, String>();
 
@@ -159,7 +151,7 @@ public class SchoolListActivity extends ListActivity{
                         school.put(jschool.KAASSA_NAME, name);
                         school.put(jschool.KAASSA_SLUG, slug);
                         school.put(jschool.KAASSA_CONTACT_WEB_SITE, website);
-
+                        
                         // adding school to school list
                         schoolsList.add(school);
                     }
@@ -185,7 +177,7 @@ public class SchoolListActivity extends ListActivity{
             ListAdapter adapter = new SimpleAdapter(
                     SchoolListActivity.this, schoolsList,
                     R.layout.kaassa_school_list_item, new String[] {jschool.KAASSA_NAME, jschool.KAASSA_SLUG,
-                    		jschool.KAASSA_CONTACT_WEB_SITE }, new int[] { R.id.school_name,R.id.school_slug,R.id.website });
+                    		jschool.KAASSA_CONTACT_WEB_SITE }, new int[] { R.id.school_name,R.id.slug,R.id.website });
 
             setListAdapter(adapter);
         }

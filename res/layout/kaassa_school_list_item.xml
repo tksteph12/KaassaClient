@@ -19,15 +19,17 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <!-- Email label -->
+    <!-- Slug  -->
     <TextView
         android:id="@+id/slug"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:textColor="#acacac" />
+        android:paddingTop="10dip"
+        android:textColor="#5e5efa"
+        android:textStyle="bold" />
 
-    <!-- Mobile number label -->
+    <!-- website -->
     <TextView
         android:id="@+id/website"
         android:layout_width="wrap_content"

@@ -10,7 +10,6 @@ import com.example.kaassaclient.activities.SchoolListActivity;
 
 public class BackUpDatas {
 	
-	
 	public static String fetch(String file){
 		Object obj = null;
 		try {
@@ -21,7 +20,6 @@ public class BackUpDatas {
 		        is.read(buffer);
 		        is.close();
 		        obj = new String(buffer, "UTF-8");		 
-			
 		} catch (FileNotFoundException ex) {
 			ex.printStackTrace();
 		} catch (IOException ex) {

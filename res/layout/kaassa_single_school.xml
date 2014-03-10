@@ -17,7 +17,7 @@
   <TextView android:id="@+id/school_slug"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#acacac"/>
+            android:textColor="#5e5efa"/>
     
   <!-- Kaassa_school_website -->
   <TextView android:id="@+id/school_website"
