@@ -1,10 +1,8 @@
 package com.example.kaassaclient.activities.Entities;
 
-public abstract class JSONSchool {
+public abstract class JSONSchool extends JSONEntity{
 
-	//*************URL to get contacts JSON******************
-     public String schoolUrl = null;
- 
+	
     //*************JSON Node names***************************
      public static final String KAASSA_SCHOOLS = "schools";
      public static final String KAASSA_NAME = "name";
@@ -45,6 +43,6 @@ public abstract class JSONSchool {
      public static final String KAASSA_PICTURES_EXT = "ext";
      public static final String KAASSA_PICTURES_ALT = "alt";
      
-     public abstract void setURL(String url);
+     
     
 }

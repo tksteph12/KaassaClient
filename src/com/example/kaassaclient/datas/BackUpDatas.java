@@ -10,10 +10,16 @@ import com.example.kaassaclient.activities.SchoolListActivity;
 
 public class BackUpDatas {
 	
-	public static String fetch(String file){
+	/**
+	 * 
+	 * @param file
+	 * @param context the context of the calling activity in order to make this class completely independent of the type of activity calling it
+	 * @return
+	 */
+	public static String fetch(String file,Context context){
 		Object obj = null;
 		try {
-			Context context = SchoolListActivity.getContext();
+			//Context context = SchoolListActivity.getContext();
 			InputStream is = context.getResources().getAssets().open(file);
 		        int size = is.available();
 		        byte[] buffer = new byte[size];

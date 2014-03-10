@@ -29,8 +29,9 @@ import android.view.View;
 import com.example.kaassaclient.activities.Entities.JSONSchool;
 import com.example.kaassaclient.serviceshandler.HTTPServiceHandler;
 import com.example.kaassaclient.serviceshandler.ServiceHandler;
+import com.example.kaassaclient.utils.views.UIUtils;
 
-public class SchoolListActivity extends ListActivity{
+public class SchoolListActivity extends ListActivity {
 	
 	//**********************Variables********************************
 	JSONSchool jschool; //Representation of a json school
@@ -44,7 +45,7 @@ public class SchoolListActivity extends ListActivity{
 		jschool = new JSONSchool(){
 			@Override
 			public void setURL(String url) {
-				this.schoolUrl = url;				
+				this.url = url;				
 			}			
 		};
 	}
@@ -73,7 +74,6 @@ public class SchoolListActivity extends ListActivity{
                 String slug = ((TextView)view.findViewById(R.id.slug)).getText().toString();
                 String website = ((TextView)view.findViewById(R.id.website)).getText().toString();
  
-                Log.d("KAASSA_SLUG",slug);
                 // Starting single contact activity
                 Intent intent = new Intent(getApplicationContext(),SingleSchoolActivity.class);
                 intent.putExtra(jschool.KAASSA_NAME, name);
@@ -101,27 +101,30 @@ public class SchoolListActivity extends ListActivity{
     private class GetSchools extends AsyncTask<Void, Void, Void> {
 
         private ProgressDialog pDialog;
-
     	
     	@Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
             pDialog = new ProgressDialog(SchoolListActivity.this);
-            pDialog.setMessage("Application Loading...");
-            pDialog.setCancelable(false);
-            pDialog.show();
+            UIUtils.wait(pDialog);
 
         }
 
         @Override
-        protected Void doInBackground(Void... arg0) {
+        protected Void doInBackground(Void... params) {
             // Creating service handler class instance
-            ServiceHandler sh = new HTTPServiceHandler();
+            ServiceHandler sh = new HTTPServiceHandler(); //Won't it be better if it was static?
 
 			// Making a request to url and getting response
-            //jschool.setURL("http://localhost/kaassa/schools.json");
-            String jsonStr = sh.requestService(jschool.schoolUrl, ServiceHandler.GET);
+
+            String jsonStr;
+            if (jschool.url ==null){
+            	jsonStr = ServiceHandler.requestLocalDataService(url,getContext());
+            }else{
+            	
+            	jsonStr = sh.requestService(jschool.url, ServiceHandler.GET);
+            }
 
             Log.d("Response: ", "> " + jsonStr);
 
@@ -169,20 +172,20 @@ public class SchoolListActivity extends ListActivity{
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             // Dismiss the progress dialog
-            if (pDialog.isShowing())
-                pDialog.dismiss();
+            UIUtils.dismiss(pDialog);
             /**
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
                     SchoolListActivity.this, schoolsList,
-                    R.layout.kaassa_school_list_item, new String[] {jschool.KAASSA_NAME, jschool.KAASSA_SLUG,
-                    		jschool.KAASSA_CONTACT_WEB_SITE }, new int[] { R.id.school_name,R.id.slug,R.id.website });
+                    R.layout.kaassa_school_list_item, 
+                    new String[] {jschool.KAASSA_NAME, jschool.KAASSA_SLUG, jschool.KAASSA_CONTACT_WEB_SITE }, 
+		            new int[] { R.id.school_name,R.id.slug,R.id.website }
+               );
 
             setListAdapter(adapter);
         }
         
-
     }
     
     // Is this the proper way to do?

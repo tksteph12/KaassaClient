@@ -16,7 +16,7 @@ public class SingleSchoolActivity extends Activity{
 		jschool = new JSONSchool(){
 			@Override
 			public void setURL(String url) {
-				this.schoolUrl = url;				
+				this.url = url;				
 			}			
 		};
 	}

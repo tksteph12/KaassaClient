@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 
+import android.content.Context;
+
+import com.example.kaassaclient.datas.BackUpDatas;
+
 public abstract class ServiceHandler {
 	
 	//********Variable Declarations***********************
@@ -31,5 +35,9 @@ public abstract class ServiceHandler {
      * */
 	//abstract String requestService(String url, int method,List<?>params);
 	public abstract String requestService(String url, int method, List<NameValuePair> params);
+	
+	public static String requestLocalDataService(String url,Context context){
+		return  BackUpDatas.fetch("schools.json",context);
+	}
 		
 }
