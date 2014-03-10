@@ -15,6 +15,8 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.util.Log;
+
 import com.example.kaassaclient.datas.BackUpDatas;
 
 public class HTTPServiceHandler extends ServiceHandler {
@@ -27,11 +29,11 @@ public class HTTPServiceHandler extends ServiceHandler {
 
 	@Override
 	public String requestService(String url, int method, List<NameValuePair> params) {
-		
 		if (url==null){
+			Log.e("URL STATUS", "url nulle");
 			return  BackUpDatas.fetch("schools.json");
 		}else{
-		
+			Log.e("URL STATUS", "url Non null");
 				try {
 					// http client
 					DefaultHttpClient httpClient = new DefaultHttpClient();

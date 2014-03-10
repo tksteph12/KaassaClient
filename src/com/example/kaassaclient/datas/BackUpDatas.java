@@ -1,30 +1,31 @@
 package com.example.kaassaclient.datas;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import android.content.Context;
+
+import com.example.kaassaclient.activities.SchoolListActivity;
 
 public class BackUpDatas {
 	
 	
 	public static String fetch(String file){
-		JSONParser parser = new JSONParser();
 		Object obj = null;
 		try {
-			 obj = parser.parse(new FileReader(file));
+			Context context = SchoolListActivity.getContext();
+			InputStream is = context.getResources().getAssets().open(file);
+		        int size = is.available();
+		        byte[] buffer = new byte[size];
+		        is.read(buffer);
+		        is.close();
+		        obj = new String(buffer, "UTF-8");		 
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 		return obj.toString();
 	}

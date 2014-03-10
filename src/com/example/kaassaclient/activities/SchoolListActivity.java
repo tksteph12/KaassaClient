@@ -10,8 +10,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.kaassaclient.R;
+
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,6 +40,7 @@ public class SchoolListActivity extends ListActivity{
 	
 	
 	public SchoolListActivity(){
+		instance = this;
 		jschool = new JSONSchool(){
 			@Override
 			public void setURL(String url) {
@@ -65,17 +68,26 @@ public class SchoolListActivity extends ListActivity{
             public void onItemClick(AdapterView<?> parent, View view,
                     int position, long id) {
                 // getting values from selected ListItem
+            	try{
                 String name = ((TextView)view.findViewById(R.id.school_name)).getText().toString();
-                String slug = ((TextView) view.findViewById(R.id.school_slug)).getText().toString();
-                String website = ((TextView) view.findViewById(R.id.school_website)).getText().toString();
+                Log.d("SCHOOL_NAME",name);
+                /*String slug = ((TextView) view.findViewById(R.id.school_slug)).getText().toString();
+                Log.d("SCHOOL_SLUG",slug);
+                String website = ((TextView) view.findViewById(R.id.school_website)).getText().toString();*/
  
                 // Starting single contact activity
                 Intent intent = new Intent(getApplicationContext(),
                         SingleSchoolActivity.class);
                 intent.putExtra(jschool.KAASSA_NAME, name);
-                intent.putExtra(jschool.KAASSA_CLASSE_SLUG, slug);
-                intent.putExtra(jschool.KAASSA_CONTACT_WEB_SITE, website);
+                //intent.putExtra(jschool.KAASSA_CLASSE_SLUG, slug);
+                //intent.putExtra(jschool.KAASSA_CONTACT_WEB_SITE, website);
                 startActivity(intent);
+            	}
+            	catch (Exception e){
+            		Log.d("EXCEPTION",e.getMessage());
+            		e.printStackTrace();
+            		
+            	}
  
             }
         });
@@ -112,7 +124,7 @@ public class SchoolListActivity extends ListActivity{
             ServiceHandler sh = new HTTPServiceHandler();
 
 			// Making a request to url and getting response
-            jschool.setURL("http://localhost/kaassa/schools.json");
+            //jschool.setURL("http://localhost/kaassa/schools.json");
             String jsonStr = sh.requestService(jschool.schoolUrl, ServiceHandler.GET);
 
             Log.d("Response: ", "> " + jsonStr);
@@ -129,12 +141,17 @@ public class SchoolListActivity extends ListActivity{
                         JSONObject schools = allschools.getJSONObject(i);
                          
                         String name = schools.getString(jschool.KAASSA_NAME);
+                        Log.d("SCHOOL_NAME",name);
+
                         String slug = schools.getString(jschool.KAASSA_SLUG);
+                        Log.d("SCHOOL_SLUG",slug);
 
                         // school node is JSON Object
                         JSONObject contact = schools.getJSONObject(jschool.KAASSA_CONTACT);
-                        String website = schools.getString(jschool.KAASSA_CONTACT_WEB_SITE);
+                        Log.d("SCHOOL_CONTACT",contact.toString());
                         
+                        String website = contact.getString(jschool.KAASSA_CONTACT_WEB_SITE);
+                        Log.d("SCHOOL_WEBSITE",website);
                         // tmp hashmap for single school
                         HashMap<String, String> school = new HashMap<String, String>();
 
@@ -175,6 +192,16 @@ public class SchoolListActivity extends ListActivity{
         
 
     }
+    
+    // Is this the proper way to do?
+    public static Context getContext(){
+        return instance.getApplicationContext();
+    }
+    
+    private static SchoolListActivity instance;
 
+    public static SchoolListActivity getInstance() {
+        return instance;
+    }
 	
 }
