@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+      <!-- School Name Label -->
+  <TextView android:id="@+id/shcool_name_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dip"
+            android:textStyle="bold"
+            android:paddingTop="10dip"
+            android:paddingBottom="10dip"
+            android:textColor="#43bd00"/>
+  <!-- Kaassa_school_slug -->
+  <TextView android:id="@+id/school_slug"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#acacac"/>
+    
+  <!-- Kaassa_school_website -->
+  <TextView android:id="@+id/school_website"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:textStyle="bold"/>
+</LinearLayout>
+  

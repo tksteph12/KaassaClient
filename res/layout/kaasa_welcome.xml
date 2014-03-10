@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Created by stk
+	Copyright 2014 Ltd. All rights reserved.
+  	License: GPLv3
+  	Full license at "/LICENSE"
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/welcome_upper_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentTop="true"
+    android:layout_marginBottom="48dp"
+    android:background="@color/kaassa_screen_bg"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/kaassa_main_logo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/kaassa_logo" 
+        android:contentDescription="@string/kaassa_todo"/>
+
+</LinearLayout>
