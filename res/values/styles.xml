@@ -44,6 +44,10 @@
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_centerHorizontal">true</item>
     </style>
+    <style name="PreyButton.Large">
+        <item name="android:textSize">30dp</item>
+        <item name="android:layout_height">72dp</item>
+    </style>
     
 
 </resources>
