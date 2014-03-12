@@ -12,6 +12,7 @@ public final class R {
     }
     public static final class color {
         public static final int kaassa_color_txt=0x7f040001;
+        public static final int kaassa_darker_txt=0x7f040002;
         public static final int kaassa_screen_bg=0x7f040000;
     }
     public static final class dimen {
@@ -101,6 +102,7 @@ public final class R {
          */
         public static final int AppTheme=0x7f070001;
         public static final int PreyButton=0x7f070004;
+        public static final int PreyButton_Large=0x7f070005;
         public static final int PreyEditText=0x7f070002;
         public static final int PreyEditText_XLarge=0x7f070003;
     }
