@@ -2,11 +2,16 @@ package com.example.kaassaclient.activities;
 
 
 import com.example.kaassaclient.activities.Entities.JSONSchool;
-
+import com.example.kaassaclient.PagerActivity;
 import com.example.kaassaclient.R;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class SingleSchoolActivity extends Activity{
@@ -43,5 +48,21 @@ public class SingleSchoolActivity extends Activity{
         lblName.setText(name);
         lblSlug.setText(slug);
         lblWebSite.setText(website);
+        
+     // Set up action bar.
+        final ActionBar actionBar = getActionBar();
+
+        // Specify that the Home button should show an "Up" caret, indicating that touching the
+        // button will take the user one step up in the application's hierarchy.
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+            	finishFromChild(this);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

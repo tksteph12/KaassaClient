@@ -30,31 +30,38 @@ public final class R {
         public static final int kaassa_logo=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
-        public static final int kaassa_main_logo=0x7f090001;
-        public static final int school_name=0x7f090002;
-        public static final int school_slug=0x7f090006;
-        public static final int school_website=0x7f090007;
-        public static final int shcool_name_label=0x7f090005;
-        public static final int slug=0x7f090003;
-        public static final int website=0x7f090004;
-        public static final int welcome_upper_layout=0x7f090000;
+        public static final int action_settings=0x7f09000b;
+        public static final int demo_external_activity=0x7f090007;
+        public static final int kaassa_main_logo=0x7f090002;
+        public static final int new_school_search_button=0x7f090006;
+        public static final int pager=0x7f090000;
+        public static final int school_name=0x7f090003;
+        public static final int school_slug=0x7f090009;
+        public static final int school_website=0x7f09000a;
+        public static final int shcool_name_label=0x7f090008;
+        public static final int slug=0x7f090004;
+        public static final int website=0x7f090005;
+        public static final int welcome_upper_layout=0x7f090001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int kaasa_home=0x7f030001;
-        public static final int kaasa_item=0x7f030002;
-        public static final int kaasa_welcome=0x7f030003;
-        public static final int kaassa_company_list_item=0x7f030004;
-        public static final int kaassa_hotel_list_item=0x7f030005;
-        public static final int kaassa_new_appartment=0x7f030006;
-        public static final int kaassa_new_company=0x7f030007;
-        public static final int kaassa_new_hotel=0x7f030008;
-        public static final int kaassa_new_school=0x7f030009;
-        public static final int kaassa_school_list_item=0x7f03000a;
-        public static final int kaassa_single_company=0x7f03000b;
-        public static final int kaassa_single_hotel=0x7f03000c;
-        public static final int kaassa_single_school=0x7f03000d;
+        public static final int copy_of_activity_main=0x7f030001;
+        public static final int kaasa_home=0x7f030002;
+        public static final int kaasa_item=0x7f030003;
+        public static final int kaasa_welcome=0x7f030004;
+        public static final int kaassa_company_list_item=0x7f030005;
+        public static final int kaassa_company_search=0x7f030006;
+        public static final int kaassa_hotel_list_item=0x7f030007;
+        public static final int kaassa_hotel_search=0x7f030008;
+        public static final int kaassa_new_appartment=0x7f030009;
+        public static final int kaassa_new_company=0x7f03000a;
+        public static final int kaassa_new_hotel=0x7f03000b;
+        public static final int kaassa_new_school=0x7f03000c;
+        public static final int kaassa_school_list_item=0x7f03000d;
+        public static final int kaassa_school_search=0x7f03000e;
+        public static final int kaassa_single_company=0x7f03000f;
+        public static final int kaassa_single_hotel=0x7f030010;
+        public static final int kaassa_single_school=0x7f030011;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -62,6 +69,7 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
+        public static final int dummy_section_text=0x7f06000d;
         public static final int hello_world=0x7f060002;
         public static final int kaassa_adress_label=0x7f060009;
         public static final int kaassa_cancel=0x7f06000b;

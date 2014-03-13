@@ -5,7 +5,6 @@ import android.content.Context;
 
 /**
  * @author Stephane TATCHUM
- *
  * 
  */
 public class CompanyListActivity extends ListActivity{

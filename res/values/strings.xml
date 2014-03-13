@@ -14,5 +14,7 @@
     <string name="kaassa_next">Suivant</string>
     <string name="kaassa_cancel">Annuler</string>
     <string name="kaassa_validate">Valider</string>
+        <string name="dummy_section_text">Section %1d is just a dummy section.</string>
+    
    
 </resources>
